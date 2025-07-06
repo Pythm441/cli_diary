@@ -3,7 +3,7 @@ import datetime
 
 day = datetime.date.today().strftime('%d')
 month = datetime.date.today().strftime('%m')
-year = datetime.date.today().strftime('%y')
+year = datetime.date.today().strftime('%Y')
 path = f"/home/abdelrahman/Documents/Diary/{year}/{month}"
 file_path = os.path.join(path, day)
 
