@@ -5,7 +5,7 @@ day = datetime.date.today().strftime('%d')
 month = datetime.date.today().strftime('%m')
 year = datetime.date.today().strftime('%Y')
 path = f"/home/abdelrahman/Documents/Diary/{year}/{month}"
-file_path = os.path.join(path, day)
+file_path = os.path.join(path, f"{day}.txt")
 
 def add_entry():
    
@@ -14,10 +14,26 @@ def add_entry():
 
     content = input("What are you feeling today? \n")
     with open(file_path, "a") as file:
-        file.write(content)
+        file.write(content + "\n")
 
     return
 def show_entry():
+
+    iYear = input("What year? : ")
+    iMonth = input("What month? : ")
+    iDay = input("What day? : ")
+    ipath = f"/home/abdelrahman/Documents/Diary/{iYear}/{iMonth}/{iDay}.txt"
+
+    if (os.path.exists(ipath)):
+        with open(ipath, "r") as file:
+          content =  file.read()
+        print(content)  
+    else:
+        print("Whoops please enter a valid path") 
+        print(ipath)     
+
+
+
     return
 
 def main():
@@ -28,10 +44,10 @@ def main():
         option = int(input("Option : "))
         if option == 1:
             add_entry()
-            continue
+            
         elif option == 2:
-            #show_entry()
-            continue
+            show_entry()
+            
         elif option == 3:
             break
         else:
